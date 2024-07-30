@@ -137,10 +137,10 @@ export const insightLogic = kea<insightLogicType>([
 
                     const response = await insightsApi.update(values.queryBasedInsight.id, insightUpdate, {
                         writeAsQuery: values.queryBasedInsightSaving,
-                        readAsQuery: false,
+                        readAsQuery: true,
                     })
                     breakpoint()
-                    const updatedInsight: InsightModel = {
+                    const updatedInsight: QueryBasedInsightModel = {
                         ...response,
                         result: response.result || values.legacyInsight.result,
                     }
@@ -169,7 +169,7 @@ export const insightLogic = kea<insightLogicType>([
 
                     const response = await insightsApi.update(values.queryBasedInsight.id, metadataUpdate, {
                         writeAsQuery: values.queryBasedInsightSaving,
-                        readAsQuery: false,
+                        readAsQuery: true,
                     })
                     breakpoint()
 
@@ -184,7 +184,7 @@ export const insightLogic = kea<insightLogicType>([
                             action: async () => {
                                 const response = await insightsApi.update(values.queryBasedInsight.id, beforeUpdates, {
                                     writeAsQuery: values.queryBasedInsightSaving,
-                                    readAsQuery: false,
+                                    readAsQuery: true,
                                 })
                                 savedInsightsLogic.findMounted()?.actions.loadInsights()
                                 dashboardsModel.actions.updateDashboardInsight(response)
