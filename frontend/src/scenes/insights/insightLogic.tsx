@@ -456,7 +456,7 @@ export const insightLogic = kea<insightLogicType>([
                 },
                 {
                     writeAsQuery: values.queryBasedInsightSaving,
-                    readAsQuery: false,
+                    readAsQuery: true,
                 }
             )
             lemonToast.info(
